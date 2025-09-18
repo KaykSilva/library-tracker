@@ -5,7 +5,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from "@/components/ui/sheet";
 import { Card, CardContent } from "@/components/ui/card";
-import { LogOut, Menu, Home, Settings, Users, Bell, X, ChevronsRight, Move, SquareX } from "lucide-react";
+import { LogOut, Menu, Home, Settings, Users, Bell, SquareX, BookOpen, RefreshCw, Search } from "lucide-react";
 
 type Props = {
   children: React.ReactNode;
@@ -26,7 +26,7 @@ export default function NextLayout({ children }: Props) {
 
     checkIsMobile();
     window.addEventListener('resize', checkIsMobile);
-    
+
     return () => {
       window.removeEventListener('resize', checkIsMobile);
     };
@@ -34,7 +34,10 @@ export default function NextLayout({ children }: Props) {
 
   const navItems = [
     { label: "Início", icon: <Home size={16} />, href: "/" },
-    { label: "Usuários", icon: <Users size={16} />, href: "/users" },
+    { label: "Livros", icon: <BookOpen size={16} />, href: "/livros" },
+    { label: "Empréstimos", icon: <RefreshCw size={16} />, href: "/emprestimos" },
+    { label: "Buscar", icon: <Search size={16} />, href: "/buscar-livro" },
+    { label: "Usuários", icon: <Users size={16} />, href: "/usuarios" },
     { label: "Configurações", icon: <Settings size={16} />, href: "/settings" },
   ];
 
@@ -42,9 +45,8 @@ export default function NextLayout({ children }: Props) {
     <div className="min-h-screen flex bg-slate-50">
       {/* Sidebar Desktop - FIXO */}
       <aside
-        className={`hidden md:flex flex-col bg-white border-r shadow-sm transition-all duration-200 ease-in-out overflow-hidden fixed h-full ${
-          collapsed ? "w-16" : "w-64"
-        }`}
+        className={`hidden md:flex flex-col bg-white border-r shadow-sm transition-all duration-200 ease-in-out overflow-hidden fixed h-full ${collapsed ? "w-16" : "w-64"
+          }`}
       >
         <div className="flex items-center gap-3 px-4 py-4 border-b">
           <div className="flex items-center gap-3">
@@ -59,9 +61,8 @@ export default function NextLayout({ children }: Props) {
               <li key={item.href}>
                 <a
                   href={item.href}
-                  className={`group flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100 transition-colors text-slate-700 ${
-                    collapsed ? "justify-center" : ""
-                  }`}
+                  className={`group flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100 transition-colors text-slate-700 ${collapsed ? "justify-center" : ""
+                    }`}
                 >
                   {item.icon}
                   {!collapsed && <span className="text-sm">{item.label}</span>}
@@ -98,28 +99,30 @@ export default function NextLayout({ children }: Props) {
         </SheetTrigger>
         <SheetContent side="left" className="w-64 p-0">
           <SheetTitle className="sr-only">Menu de Navegação</SheetTitle>
-          
-          
+
+
           <div className="absolute right-2 top-2 z-40">
             <SheetClose asChild>
               <Button variant="ghost" size="lg" className="h-8 w-8 p-0">
-              <SquareX size={16} />
+                <SquareX size={16} />
                 <span className="sr-only">Fechar menu</span>
               </Button>
             </SheetClose>
           </div>
-          
+
           <div className="h-full flex flex-col">
             <div className="px-4 py-4 border-b flex items-center gap-3">
-              <div className="h-10 w-10 rounded-md bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-semibold">LT</div>
+              <div className="h-10 w-10 rounded-md bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-semibold">ç
+                <img src="https://i.pinimg.com/736x/2c/8b/20/2c8b20d42f081aeff20db75b2da72113.jpg" alt="coveira" className="radius" />
+              </div>
               <div className="font-semibold text-gray-800">Libraty Tracker</div>
             </div>
             <nav className="p-4 flex-1 overflow-y-auto">
               <ul className="space-y-2">
                 {navItems.map((item) => (
                   <li key={item.href}>
-                    <a 
-                      href={item.href} 
+                    <a
+                      href={item.href}
                       className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-slate-100 text-slate-700"
                       onClick={() => setSheetOpen(false)}
                     >
@@ -151,23 +154,23 @@ export default function NextLayout({ children }: Props) {
       </Sheet>
 
       {/* Main Content Area - COM MARGEM PARA A SIDEBAR */}
-      <div className={`flex-1 flex flex-col min-w-0 transition-all duration-200 ${
-        collapsed ? "md:ml-16" : "md:ml-64"
-      }`}>
+      <div className={`flex-1 flex flex-col min-w-0 transition-all duration-200 ${collapsed ? "md:ml-16" : "md:ml-64"
+        }`}>
+          
         {/* Topbar */}
-        <header className="flex items-center gap-2 px-4 py-3 bg-white border-b sticky top-0 z-20">
+        <header className="flex items-center gap-2 px-4 py-3 bg-white border-b sticky top-0 z-20 h-18">
           <div className="hidden md:flex items-center gap-3">
             <Button variant="ghost" size="sm" onClick={() => setCollapsed((s) => !s)} className="cursor-pointer">
-              <Menu size={16} color="black"/>
+              <Menu size={16} color="black" />
             </Button>
           </div>
 
           <div className="flex items-center gap-2 justify-end flex-1">
             <Button variant="ghost" size="sm" className="p-2">
-              <Bell size={16} color="black"/>
+              <Bell size={16} color="black" />
               <span className="sr-only text-gray-600">Notificações</span>
             </Button>
-            
+
             <div className="hidden sm:flex items-center gap-2">
               <div className="text-right mr-2 hidden lg:block">
                 <div className="text-sm font-medium text-zinc-800">Kayk Silva</div>
