@@ -5,7 +5,7 @@ import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetClose } from "@/components/ui/sheet";
 import { Card, CardContent } from "@/components/ui/card";
-import { LogOut, Menu, Home, Settings, Users, Bell, SquareX, BookOpen, RefreshCw, Search } from "lucide-react";
+import { LogOut, Menu, Home, Settings, Users, Bell, BookOpen, RefreshCw, Search,X, ChevronRight } from "lucide-react";
 
 type Props = {
   children: React.ReactNode;
@@ -103,13 +103,12 @@ export default function NextLayout({ children }: Props) {
 
           <div className="absolute right-2 top-2 z-40">
             <SheetClose asChild>
-              <Button variant="ghost" size="lg" className="h-8 w-8 p-0">
-                <SquareX size={16} />
+              <Button variant="ghost" size="lg" className="h-8 w-8 p-0 bg-gray-400">
+                <ChevronRight size={26} className="text-gray-900"/>
                 <span className="sr-only">Fechar menu</span>
               </Button>
             </SheetClose>
           </div>
-
           <div className="h-full flex flex-col">
             <div className="px-4 py-4 border-b flex items-center gap-3">
               <div className="h-10 w-10 rounded-md bg-gradient-to-br from-indigo-500 to-pink-500 flex items-center justify-center text-white font-semibold">ç
