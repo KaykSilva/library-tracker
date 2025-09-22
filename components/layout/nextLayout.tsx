@@ -184,7 +184,7 @@ export default function NextLayout({ children }: Props) {
 
         {/* Page container - ÁREA ROLÁVEL */}
         <main className="flex-1 overflow-auto bg-slate-50">
-          <div className="p-4 md:p-6 max-w-7xl mx-auto w-full">
+          <div className="p-4 md:p-6  mx-auto w-full">
             {children}
           </div>
         </main>
