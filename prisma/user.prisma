@@ -1,12 +1,11 @@
 model User {
-  createdAt  DateTime? @default(now())
+  createdAt  DateTime @default(now())
   email      String
   id         String    @id @default(uuid())
-  isActive   Boolean?  @default(true)
-  isAdmin    Boolean?  @default(false)
-  name       String?
+  isActive   Boolean  @default(true)
+  isAdmin    Boolean  @default(false)
+  name       String
   password   String
-  permission Json
   updatedAt  DateTime? @updatedAt
 
   @@map("user")

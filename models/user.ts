@@ -1,11 +1,10 @@
 export interface User {
-  id: number;
+  id: string;
   email: string;
-  name: string | null;
+  name: string ;
   password: string;
   isActive: boolean;
   isAdmin: boolean;
-  permission: unknown;
   createdAt: Date;
   updatedAt: Date | null;
 }
