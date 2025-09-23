@@ -1,21 +1,18 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import NextLayout from "@/components/layout/nextLayout";
 import "./globals.css";
-import type { Metadata } from "next";
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const noLayoutRoutes = ["/auth/login", "/register"]; // rotas sem layout
 
-export const metadata: Metadata = {
-  title: "Library Tracker",
-  description: "",
-};
+  const isNoLayout = noLayoutRoutes.includes(pathname);
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
   return (
     <html lang="pt-BR">
       <body>
-        <NextLayout>{children}</NextLayout>
+        {isNoLayout ? children : <NextLayout>{children}</NextLayout>}
       </body>
     </html>
   );
