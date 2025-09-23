@@ -1,21 +1,21 @@
 model Book {
-  id            Int      @id @default(autoincrement())
+  id            String  @id @default(uuid())
   title         String
   author        String
-  isbn          String   @unique
+  isbn          String  @unique
   genre         String
   publisher     String?
   publishedYear Int?
   pages         Int?
-  language      String?  @default("Português")
+  language      String? @default("Português")
   description   String?
-  
-  available     Boolean  @default(true)
-  borrowedAt    DateTime?
-  dueDate       DateTime?
-  
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+
+  available  Boolean   @default(true)
+  borrowedAt DateTime?
+  dueDate    DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@map("books")
 }
