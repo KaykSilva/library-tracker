@@ -4,6 +4,16 @@ import { ILoginForm } from "./type";
 import { loginRequest } from "@/services/login";
 import Cookies from "js-cookie";
 
+/**
+ * LoginForm component.
+ *
+ * @param {ILoginForm} formData - The form data of the form.
+ * @param {boolean} loading - Whether the form is loading or not.
+ * @param {(e: React.ChangeEvent<HTMLInputElement>) => void} handleChange - The function to handle the change of the form data.
+ * @param {() => Promise<void>} onSubmit - The function to submit the form data.
+ *
+ * @returns {JSX.Element} - The LoginForm component.
+ */
 const LoginForm = () => {
   const [formData, setFormData] = React.useState<ILoginForm>({
     email: "",
