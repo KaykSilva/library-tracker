@@ -1,0 +1,12 @@
+model User {
+  createdAt  DateTime @default(now())
+  email      String
+  id         String    @id @default(uuid())
+  isActive   Boolean  @default(true)
+  isAdmin    Boolean  @default(false)
+  name       String
+  password   String
+  updatedAt  DateTime? @updatedAt
+
+  @@map("user")
+}

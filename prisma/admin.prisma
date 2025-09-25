@@ -1,0 +1,13 @@
+model Admin {
+    address   String
+    birthDate DateTime
+    cpf       String    @unique
+    createdAt DateTime? @default(now())
+    id        String    @id @default(uuid())
+    name      String
+    phone     String
+    updatedAt DateTime? @updatedAt
+    user      Int       @unique
+
+    @@map("admin")
+}

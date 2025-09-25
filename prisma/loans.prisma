@@ -1,0 +1,20 @@
+model loan {
+    id         String   @id @default(uuid())
+    userId     String 
+    bookId     String
+    loanDate   DateTime @default(now())
+    dueDate    DateTime
+    returnDate DateTime?
+    Active     Boolean  @default(true)
+    Returned   Boolean  @default(false)
+    Late       Boolean  @default(false)
+    fineAmount Float?  @default(0)
+    finePaid   Boolean  @default(false)
+    
+    createdat  DateTime @default(now())
+    updatedat  DateTime @updatedAt
+
+
+    @@map("loans")
+    
+}
