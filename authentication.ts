@@ -17,8 +17,6 @@ function generateIV(): Buffer {
     return crypto.randomBytes(16);
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
 
     /**

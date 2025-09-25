@@ -27,7 +27,6 @@ function checkUserRequiredFields(user: User): boolean {
     });
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export
 export default {
 
     /**
@@ -99,7 +98,7 @@ export default {
             adminData.user = parseInt(newUser.id, 10);
             await adminService.create(adminData);
             res.sendStatus(201);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             console.error('Error creating admin:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
@@ -167,7 +166,7 @@ export default {
             }
 
             res.status(200).json(adminList);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             console.error('Error retrieving all admins:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
@@ -216,7 +215,7 @@ export default {
             }
 
             res.status(200).json(admin);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             console.error('Error retrieving admin:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
@@ -265,7 +264,7 @@ export default {
             }
 
             res.status(200).json(admin);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             console.error('Error retrieving admin:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
@@ -314,7 +313,7 @@ export default {
             }
 
             res.status(200).json(admin);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             console.error('Error retrieving admin:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
@@ -373,7 +372,7 @@ export default {
             }
 
             res.status(200).json(adminList);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             console.error('Error retrieving admins:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
@@ -433,7 +432,7 @@ export default {
             }
 
             res.sendStatus(200);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             console.error('Error updating admin:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
@@ -483,7 +482,7 @@ export default {
 
             await adminService.delete(id);
             res.sendStatus(204);
-        } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
             console.error('Error deleting admin:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {

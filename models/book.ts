@@ -1,17 +1,17 @@
 export interface Book {
-  id: number;
-  title: string;
   author: string;
-  isbn: string;
-  genre: string;
-  publisher: string | null;
-  publishedYear: number | null;
-  pages: number | null;
-  language: string | null;
-  description: string | null;
   available: boolean;
-  borrowedAt: Date | null;
-  dueDate: Date | null;
+  city: string;
+  copies: number;
   createdAt: Date;
+  cdd: string;
+  edition: string;
+  id: string;
+  idCutter: string;
+  publisher: string;
+  releaseDate: Date;
+  title: string;
+  tomo: number | null;
   updatedAt: Date | null;
+  volume: number | null;
 }

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Prisma } from '@prisma/client';
 import prisma from '../../config/prisma';
 import { Admin, AdminWithUser } from '../../models/Admin';
