@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Prisma } from '@prisma/client';
-import { User } from '../../models/user';
+import { User } from '../../models/User';
 import prisma from '../../config/prisma';
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
+const userService = {
     create: async (user: User): Promise<User | null> => {
         try {
             return await prisma.user.create({
@@ -116,3 +115,5 @@ export default {
         }
     },
 };
+
+export default userService;
