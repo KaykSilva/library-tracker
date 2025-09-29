@@ -6,6 +6,7 @@ router.post('/login', authentication.login);
 
 const routePaths: string[] = [
     '/admin',
+    '/book',
 ];
 
 routePaths.forEach(async (path) => {

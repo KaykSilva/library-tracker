@@ -67,7 +67,6 @@ export default {
         }
 
         try {
-            // Verificar se email já existe
             if (await userService.getByEmail(userData.email)) {
                 res.status(409).json({
                     error: 'User email already registered',
@@ -75,7 +74,6 @@ export default {
                 return;
             }
 
-            // Verificar se CPF já existe (sem locationId)
             if (await adminService.getByCPF(adminData.cpf)) {
                 res.status(409).json({
                     error: 'Admin CPF already registered',
@@ -83,7 +81,6 @@ export default {
                 return;
             }
 
-            // Hash da senha e criar usuário
             userData.password = await authentication.hashPassword(userData.password);
             const newUser: User | null = await userService.create(userData);
 
@@ -94,7 +91,6 @@ export default {
                 return;
             }
 
-            // Associar admin ao usuário (convertendo string ID para number)
             adminData.user = parseInt(newUser.id, 10);
             await adminService.create(adminData);
             res.sendStatus(201);
@@ -129,7 +125,6 @@ export default {
             return;
         }
 
-        // Filtros simplificados (sem locationId)
         const isActive = req.query.isActive === 'true';
         const offset = req.query.offset ? parseInt(req.query.offset as string, 10) : undefined;
         const take = req.query.take ? parseInt(req.query.take as string, 10) : undefined;

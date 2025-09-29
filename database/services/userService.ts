@@ -2,7 +2,7 @@ import { Prisma } from '@prisma/client';
 import { User } from '../../models/User';
 import prisma from '../../config/prisma';
 
-const userService = {
+export default {
     create: async (user: User): Promise<User | null> => {
         try {
             return await prisma.user.create({
@@ -114,5 +114,3 @@ const userService = {
         }
     },
 };
-
-export default userService;
