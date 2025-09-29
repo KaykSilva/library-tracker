@@ -6,10 +6,9 @@ import bookService from '../services/bookService';
 
 function checkBookRequiredFields(book: Book): boolean {
     const requiredFields: (keyof Book)[] = [
-        'author', 'available', 'city', 'copies', 'createdAt',
-        'cdd', 'edition', 'id', 'idCutter', 'publisher',
-        'releaseDate', 'title', 'updatedAt'
-    ];
+        'author', 'available', 'city', 'copies',
+        'cdd', 'edition', 'idCutter', 'publisher',
+        'releaseDate', 'title'];
     return requiredFields.every((field) => {
         return book[field as keyof Book] !== undefined
             && book[field as keyof Book] !== null;
