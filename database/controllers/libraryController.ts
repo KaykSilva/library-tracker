@@ -82,11 +82,11 @@ export default {
             res.status(200).json(library);
 
         } catch (error: any) {
-            console.error('Error retrieving ljbrary:', error.message);
+            console.error('Error retrieving library:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
                 details: error.message || 'An unexpected error occurred',
-                error: 'Failed to retrieve ljbrary',
+                error: 'Failed to retrieve library',
             };
             res.status(statusCode).json(errorDetails);
         }
@@ -111,10 +111,10 @@ export default {
             }
             res.status(200).json(bookList);
         } catch (error: any) {
-            console.error('Error retrieving all groups:', error);
+            console.error('Error retrieving all library:', error);
             res.status(500).json({
                 details: error.message,
-                error: 'Failed to retrieve all groups',
+                error: 'Failed to retrieve all library',
             });
         }
     },

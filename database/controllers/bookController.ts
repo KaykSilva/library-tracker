@@ -73,10 +73,10 @@ export default {
             }
             res.status(200).json(bookList);
         } catch (error: any) {
-            console.error('Error retrieving all groups:', error);
+            console.error('Error retrieving all book:', error);
             res.status(500).json({
                 details: error.message,
-                error: 'Failed to retrieve all groups',
+                error: 'Failed to retrieve all book',
             });
         }
     },
@@ -153,10 +153,10 @@ export default {
             await bookService.update(idData, bookData);
             res.sendStatus(200);
         } catch (error: any) {
-            console.error('Error updating group info:', error);
+            console.error('Error updating book info:', error);
             res.status(500).json({
                 details: error.message,
-                error: 'Failed to update group info',
+                error: 'Failed to update book info',
             });
         }
     },
@@ -188,10 +188,10 @@ export default {
             await bookService.delete(idData);
             res.sendStatus(204);
         } catch (error: any) {
-            console.error('Error removing group:', error);
+            console.error('Error removing book:', error);
             res.status(500).json({
                 details: error.message,
-                error: 'Failed to delete group',
+                error: 'Failed to delete book',
             });
         }
     },
