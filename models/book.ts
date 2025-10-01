@@ -1,3 +1,5 @@
+import { Library } from './Library';
+
 export interface Book {
   author: string;
   available: boolean;
@@ -8,6 +10,8 @@ export interface Book {
   edition: string;
   id: string;
   idCutter: string;
+  library?: Library
+  libraryId: string;
   publisher: string;
   releaseDate: Date;
   title: string;

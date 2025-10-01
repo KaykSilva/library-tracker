@@ -1,20 +1,16 @@
 import { Prisma } from '@prisma/client';
-import { User } from '../../models/User';
+import { Library } from '../../models/Library';
 import prisma from '../../config/prisma';
 
 export default {
-    create: async (user: User): Promise<User | null> => {
+    create: async (library: Library): Promise<Library | null> => {
         try {
-            return await prisma.user.create({
+            return await prisma.library.create({
                 data: {
-                    email: user.email,
-                    name: user.name,
-                    isActive: user.isActive,
-                    isAdmin: user.isAdmin,
-                    password: user.password,
-                    library: {
-                        connect: { id: user.libraryId },
-                    },
+                    address: library.address,
+                    name: library.name,
+                    user: {},
+                    book: {},
                 },
             });
         } catch (error: any) {
@@ -27,29 +23,9 @@ export default {
         }
     },
 
-    getAll: async (isAdmin?: boolean): Promise<User[]> => {
+    getById: async (id: string): Promise<Library | null> => {
         try {
-            return await prisma.user.findMany({
-                where: {
-                    isActive: true,
-                    ...(isAdmin && {
-                        isAdmin,
-                    }),
-                },
-            });
-        } catch (error: any) {
-            if (error instanceof Prisma.PrismaClientKnownRequestError) {
-                console.error('Prisma error:');
-                throw new Error(error.message);
-            }
-            console.error('Unexpected error:');
-            throw new Error(error);
-        }
-    },
-
-    getById: async (id: string): Promise<User | null> => {
-        try {
-            return await prisma.user.findUnique({
+            return await prisma.library.findUnique({
                 where: { id },
             });
         } catch (error: any) {
@@ -62,10 +38,18 @@ export default {
         }
     },
 
-    getByEmail: async (email: string): Promise<User | null> => {
+    getAll: async (
+        offset?: number,
+        take?: number,
+    ):
+        Promise<Library[]> => {
         try {
-            return await prisma.user.findFirst({
-                where: { email },
+            return await prisma.library.findMany({
+                orderBy: {
+                    name: 'asc',
+                },
+                skip: offset ? Number(offset) : undefined,
+                take: take ? Number(take) : undefined,
             });
         } catch (error: any) {
             if (error instanceof Prisma.PrismaClientKnownRequestError) {
@@ -77,20 +61,14 @@ export default {
         }
     },
 
-    update: async (id: string, user: Partial<Omit<User,
-        'createdAt' |
-        'email' |
-        'id' |
-        'updatedAt' |
-        'library' |
-        'libraryId'
-    >>):
-        Promise<User | null> => {
+
+    update: async (id: string, libraryData: Partial<Omit<Library,
+        'id' | 'createdAt' | 'updatedAt' | 'user' | 'book'>>)
+        : Promise<Library | null> => {
         try {
-            return await prisma.user.update({
+            return await prisma.library.update({
                 data: {
-                    isActive: user.isActive,
-                    password: user.password,
+                    ...libraryData,
                 },
                 where: { id },
             });
@@ -104,9 +82,9 @@ export default {
         }
     },
 
-    delete: async (id: string): Promise<User | null> => {
+    delete: async (id: string): Promise<Library | null> => {
         try {
-            return await prisma.user.delete({
+            return await prisma.library.delete({
                 where: { id },
             });
         } catch (error: any) {

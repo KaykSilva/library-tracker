@@ -1,12 +1,12 @@
 import { Request, Response, Router } from 'express';
 import authentication from '../authentication';
-import bookController from '../database/controllers/bookController';
+import libraryController from '../database/controllers/libraryController';
 
 const router = Router();
 const handlers = [
     {
         key: 'id',
-        handler: bookController
+        handler: libraryController
             .getById,
     },
 ];
@@ -21,24 +21,12 @@ router.get(
         });
 
         if (handler) return handler.handler(req, res);
-        return bookController.getAll(req, res);
+        return libraryController.getAll(req, res);
     },
 );
 
 router.post(
     '/',
     authentication.verifyJWT,
-    bookController.create,
-);
-
-router.put(
-    '/:id(\\d+)',
-    authentication.verifyJWT,
-    bookController.update,
-);
-
-router.delete(
-    '/:id(\\d+)',
-    authentication.verifyJWT,
-    bookController.delete,
+    libraryController.create,
 );

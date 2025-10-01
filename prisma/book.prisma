@@ -8,6 +8,7 @@ model Book {
   edition     String
   id          String   @id @default(uuid())
   idCutter    String
+  libraryId   String
   publisher   String
   releaseDate DateTime
   title       String
@@ -15,5 +16,8 @@ model Book {
   updatedAt   DateTime @updatedAt
   volume      Int?
 
+  library Library @relation(fields: [libraryId], references: [id])
+
+  @@index([libraryId], map: "library_libraryId_fkey")
   @@map("books")
 }

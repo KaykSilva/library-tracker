@@ -1,0 +1,9 @@
+model Library {
+    address   String
+    book      Book[]
+    createdAt DateTime @default(now())
+    id        String   @id @default(uuid())
+    name      String
+    user      User[]
+    updatedAt DateTime @updatedAt
+}

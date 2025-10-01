@@ -14,6 +14,9 @@ export default {
                     cdd: book.cdd,
                     edition: book.edition,
                     idCutter: book.idCutter,
+                    library: {
+                        connect: { id: book.libraryId },
+                    },
                     publisher: book.publisher,
                     releaseDate: book.releaseDate,
                     title: book.title,
@@ -85,7 +88,8 @@ export default {
     },
 
     update: async (id: string, bookData: Partial<Omit<Book,
-        'id' | 'createdAt' | 'updatedAt' | 'cdd' | 'idCutter'>>)
+        'id' | 'createdAt' | 'updatedAt' | 'cdd' | 'idCutter' |
+        'library' | 'libraryId'>>)
         : Promise<Book | null> => {
         try {
             return await prisma.book.update({

@@ -43,11 +43,11 @@ export default {
             await bookService.create(bookData);
             res.sendStatus(201);
         } catch (error: any) {
-            console.error('Error creating admin:', error.message);
+            console.error('Error creating book:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
                 details: error.message || 'An unexpected error occurred',
-                error: 'Failed to create admin',
+                error: 'Failed to create book',
             };
             res.status(statusCode).json(errorDetails);
         }
@@ -83,7 +83,7 @@ export default {
 
 
     /**
-         * Retrieve a admin by Id.
+         * Retrieve a book by Id.
          */
     getById: async (req: Request, res: Response): Promise<void> => {
         if (!req?.headers?.['x-access-token']
@@ -113,11 +113,11 @@ export default {
             res.status(200).json(book);
 
         } catch (error: any) {
-            console.error('Error retrieving admin:', error.message);
+            console.error('Error retrieving book:', error.message);
             const statusCode = error.status || 500;
             const errorDetails = {
                 details: error.message || 'An unexpected error occurred',
-                error: 'Failed to retrieve admin',
+                error: 'Failed to retrieve book',
             };
             res.status(statusCode).json(errorDetails);
         }
